@@ -1,0 +1,9 @@
+# Charcoal application interface
+
+The existing React, Bootstrap and Ace interface uses explicit charcoal21 background, raised2F surfaces, interactive38 controls, border45, primaryF4, secondaryB4 and disabled85 text, selection59 and focusB4. The HTML applies the dark theme and initial background before the existing vendor scripts load. Bootstrap loads before application overrides. Ace uses its existing Tomorrow Night theme with neutral canvas/gutter/cursor/selection roles; semantic syntax colors remain readable.
+
+Dialogs, file lists, menus, inputs, stdout, busy/empty states and errors share those roles. No navigation, code execution, file storage, model, GeoGebra API, dependency version or source-code content is changed. GeoGebra's embedded mathematical canvas, external document content, diagrams and images retain their rendering; no inversion/filter is applied. IndexedDB remains the existing storage owner.
+
+The new cases extend the established Cypress/Chrome suite rather than introducing a second browser framework. They use real system color-scheme emulation in phone and desktop viewports; exercise file creation, menu and input surfaces, actual Ace editing, Unicode source retention across reload, actual Python output, actual errors, measured text contrast and a visible white-root negative. The full pre-existing suite remains required. Models, geometry bindings, persistent storage and vendor bytes are compared against the preceding source before execution. The existing documentation and example-index builders are invoked unchanged. Poetry2.1.4 is an official tagged test dependency; no replacement Python helper is authored.
+
+Current hosted results are pending. GeoGebra's existing loader may use its external CDN; no login, production file upload, Pages/S3 deployment or release is requested. This project has no Android APK.

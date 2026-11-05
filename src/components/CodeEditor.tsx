@@ -1,7 +1,7 @@
 import React from "react";
 import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-python";
-import "ace-builds/src-noconflict/theme-github";
+import "ace-builds/src-noconflict/theme-tomorrow_night";
 import "ace-builds/src-noconflict/ext-language_tools";
 import { useStoreActions, useStoreState } from "../store";
 import { EmptyProps, PYGGB_CYPRESS } from "../shared/utils";
@@ -38,7 +38,7 @@ export const CodeEditor: React.FC<EmptyProps> = () => {
     <>
       <AceEditor
         mode="python"
-        theme="github"
+        theme="tomorrow_night"
         name="pyggb-ace-editor"
         fontSize={14}
         width="100%"

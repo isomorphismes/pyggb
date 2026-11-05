@@ -1,3 +1,95 @@
+// Fixed neutral roles; GeoGebra's scientific canvas remains externally rendered.
+:root,
+[data-bs-theme="dark"] {
+  color-scheme: dark;
+  --bs-body-bg: #212121;
+  --bs-body-color: #F4F4F4;
+  --bs-emphasis-color: #F4F4F4;
+  --bs-secondary-bg: #2F2F2F;
+  --bs-secondary-color: #B4B4B4;
+  --bs-tertiary-bg: #383838;
+  --bs-tertiary-color: #B4B4B4;
+  --bs-border-color: #454545;
+  --bs-link-color: #F4F4F4;
+  --bs-link-hover-color: #F4F4F4;
+  --bs-primary-text-emphasis: #F4F4F4;
+  --bs-primary-bg-subtle: #383838;
+  --bs-primary-border-subtle: #454545;
+  --bs-code-color: #B4B4B4;
+  --bs-focus-ring-color: #B4B4B4;
+}
+
+html,
+body,
+#root,
+.App {
+  background-color: #212121;
+  color: #F4F4F4;
+}
+
+::selection { background: #595959; color: #F4F4F4; }
+:focus-visible { outline: 2px solid #B4B4B4; outline-offset: 2px; }
+
+.btn,
+.btn-primary,
+.btn-secondary {
+  --bs-btn-focus-shadow-rgb: 180, 180, 180;
+  --bs-btn-color: #F4F4F4;
+  --bs-btn-bg: #383838;
+  --bs-btn-border-color: #454545;
+  --bs-btn-hover-color: #F4F4F4;
+  --bs-btn-hover-bg: #454545;
+  --bs-btn-hover-border-color: #B4B4B4;
+  --bs-btn-active-color: #F4F4F4;
+  --bs-btn-active-bg: #454545;
+  --bs-btn-active-border-color: #B4B4B4;
+  --bs-btn-disabled-color: #858585;
+  --bs-btn-disabled-bg: #2F2F2F;
+  --bs-btn-disabled-border-color: #454545;
+  --bs-btn-disabled-opacity: 1;
+}
+.btn-danger { --bs-btn-color: #FFB4AB; --bs-btn-bg: #383838; --bs-btn-border-color: #454545; }
+.btn-warning { --bs-btn-color: #E8CB8B; --bs-btn-bg: #383838; --bs-btn-border-color: #454545; }
+.btn-success { --bs-btn-color: #A8D5BA; --bs-btn-bg: #383838; --bs-btn-border-color: #454545; }
+
+.form-control,
+.form-select {
+  background-color: #383838;
+  color: #F4F4F4;
+  border-color: #454545;
+  caret-color: #F4F4F4;
+  &:focus { background-color: #383838; color: #F4F4F4; border-color: #B4B4B4; box-shadow: none; }
+  &::placeholder { color: #B4B4B4; opacity: 1; }
+  &:disabled { background-color: #2F2F2F; color: #858585; }
+}
+.alert-danger { --bs-alert-color: #FFB4AB; --bs-alert-bg: #2F2F2F; --bs-alert-border-color: #454545; }
+.modal-content { background-color: #2F2F2F; color: #F4F4F4; border-color: #454545; }
+.modal-header,
+.modal-footer { border-color: #454545; }
+.dropdown-menu {
+  --bs-dropdown-bg: #2F2F2F;
+  --bs-dropdown-color: #F4F4F4;
+  --bs-dropdown-link-color: #F4F4F4;
+  --bs-dropdown-link-hover-color: #F4F4F4;
+  --bs-dropdown-link-hover-bg: #383838;
+  --bs-dropdown-link-active-color: #F4F4F4;
+  --bs-dropdown-link-active-bg: #383838;
+  --bs-dropdown-link-disabled-color: #858585;
+  --bs-dropdown-border-color: #454545;
+  --bs-dropdown-divider-bg: #454545;
+}
+
+.pyggb-IDE .ace-tomorrow-night {
+  background: #212121;
+  color: #F4F4F4;
+  .ace_gutter { background: #2F2F2F; color: #B4B4B4; }
+  .ace_cursor { color: #F4F4F4; }
+  .ace_marker-layer .ace_selection { background: #595959; }
+  .ace_marker-layer .ace_active-line,
+  .ace_gutter-active-line { background: #2F2F2F; }
+  .ace_print-margin { background: #454545; }
+}
+
 App {
   position: absolute;
   width: 100%;
@@ -29,8 +121,8 @@ App {
       margin-right: 0px;
     }
 
-    background-color: #303030;
-    color: white;
+    background-color: #2F2F2F;
+    color: #F4F4F4;
     margin: 0rem;
     justify-content: flex-start;
 
@@ -39,7 +131,7 @@ App {
         margin: 0px 8px 3px;
         a {
           font-size: 1rem;
-          color: cornflowerblue;
+          color: #F4F4F4;
         }
       }
     }
@@ -51,7 +143,7 @@ App {
 
     .loading-text {
       margin-left: 3rem;
-      color: white;
+      color: #F4F4F4;
       font-style: italic;
     }
 
@@ -60,7 +152,7 @@ App {
       flex-direction: row;
       width: 1rem; // Will be adjusted by grow/shrink
       margin-left: 3rem;
-      color: white;
+      color: #F4F4F4;
       font-style: italic;
       flex-grow: 1;
       flex-shrink: 1;
@@ -124,7 +216,7 @@ App {
         }
 
         .copy-invitation-container {
-          background-color: #ddd;
+          background-color: #383838;
           .copy-example {
             display: flex;
             flex-direction: column;
@@ -169,7 +261,9 @@ App {
 
           .ErrorList {
             overflow: auto;
-            border: 2px solid #a00;
+            border: 2px solid #FFB4AB;
+            background-color: #2F2F2F;
+            color: #F4F4F4;
             border-radius: 2px;
 
             .error-list-inner {
@@ -204,8 +298,8 @@ App {
       grid-template-rows: 2fr minmax(9rem, 1fr);
 
       .stdout-outer {
-        background-color: #303030;
-        color: #eee;
+        background-color: #2F2F2F;
+        color: #F4F4F4;
         position: relative;
       }
       .stdout-inner {
@@ -234,12 +328,12 @@ App {
     list-style: none;
     user-select: none;
     cursor: pointer;
-    background-color: #eee;
+    background-color: #2F2F2F;
     margin: 0.5rem 0rem;
     padding: 0.5rem;
     border-radius: 6px;
     &:hover {
-      background-color: #ddd;
+      background-color: #383838;
     }
   }
 }
@@ -278,7 +372,7 @@ ul.ExampleList {
   padding: 0.25rem;
   user-select: none;
   &:hover {
-    background-color: #606060;
+    background-color: #383838;
   }
 }
 
