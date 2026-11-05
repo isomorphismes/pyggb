@@ -1,0 +1,55 @@
+name: Charcoal interface and existing Cypress regression
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      ASAN_OPTIONS: detect_leaks=0
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: c6628a8d11538a0d3142513d85a0a2edfb595686
+          path: .baseline
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            src/model
+            src/wrap-ggb
+            src/shared/db.ts
+            public/vendor
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          repository: dilapidated-shed/grease
+          run-id: 41253994123
+          artifact-ids: 13062637698
+          github-token: ${{ github.token }}
+          merge-multiple: true
+          path: grease
+      - uses: isomorphisms/ai-ci/.github/actions/charcoal-grease@26e9289a364fc6654d8a1dc1840693ccdf12fd15
+      - run: sudo sysctl vm.mmap_rnd_bits=28
+      - name: Execute real application and existing Cypress suite through Grease
+        run: grease/bin/grease tools/charcoal-ci.grease "$GITHUB_WORKSPACE" "$GITHUB_WORKSPACE/build/charcoal"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: pyggb-charcoal-browser
+          path: |
+            build/charcoal/
+            cypress/screenshots/
+            cypress/videos/
+          if-no-files-found: warn
